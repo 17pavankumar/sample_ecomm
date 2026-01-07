@@ -1,9 +1,13 @@
 from django.shortcuts import render
+from .models import CarouselImage
 
 # Create your views here.
 def homeView(request):
     template = 'mainapp/home.html'
-    context = {}
+    context = {
+        'current_page' : 'home',
+        'carousel_images' : CarouselImage.objects.all()
+    }
     
     return render(request , template_name= template , context = context)
 
